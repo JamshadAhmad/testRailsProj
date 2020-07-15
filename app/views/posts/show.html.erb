@@ -13,3 +13,13 @@ desc : <%= @post.desc %>
 <br>
 
 <%= link_to 'delete', post_path(@post), method: :delete, data: { confirm: "Are you sure?"}, class: 'button btn-danger' %>
+
+<div class="container">
+  <h3><%= @post.comments.count %> Comments</h3>
+
+  <%= render @post.comments %>
+
+  <h4>Leave a reply</h4>
+  
+  <%= render 'comments/form' %>
+</div>
