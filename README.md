@@ -3,22 +3,34 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+* Ruby version: 2.6.6
 
-* Ruby version
+* Rails version: 6.0.3.2
 
-* System dependencies
+Steps to setup
 
-* Configuration
+1- Clone repository
 
-* Database creation
+`git clone git@github.com:JamshadAhmad/testRailsProj.git`
 
-* Database initialization
+2- Setup database.yml file in (if database is already created) `config/`
 
-* How to run the test suite
+otherwise, `rake db:create` to create a new database
 
-* Services (job queues, cache servers, search engines, etc.)
+3- Go into project directory  
 
-* Deployment instructions
+`cd testRailsProj`
 
-* ...
+4- Install gems 
+
+`bundle install`
+
+5- Run migrations
+
+`rails db:migrate`
+
+6- Start rails built-in server by 
+
+`rails s`
+
+7- Test site by going to http://localhost:3000/
