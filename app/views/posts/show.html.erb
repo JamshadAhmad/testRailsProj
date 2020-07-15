@@ -5,3 +5,11 @@ title : <%= @post.title %>
 <br>
 
 desc : <%= @post.desc %>
+
+<br>
+
+<%= link_to 'edit', edit_post_path(@post), class: 'button' %>
+
+<br>
+
+<%= link_to 'delete', post_path(@post), method: :delete, data: { confirm: "Are you sure?"}, class: 'button btn-danger' %>
