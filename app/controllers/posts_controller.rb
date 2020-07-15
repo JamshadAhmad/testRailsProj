@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   # renders post listing/index page
   def index
     @posts = Post.all.order("created_at DESC")
@@ -23,18 +25,14 @@ class PostsController < ApplicationController
 
   # renders show post page
   def show
-    @post = Post.find(params[:id])
   end
 
   # renders the edit page
   def edit
-    @post = Post.find(params[:id])
   end
 
   # updates the actual record
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_to @post
     else
@@ -44,8 +42,6 @@ class PostsController < ApplicationController
 
   # handles delete hit
   def destroy
-    @post = Post.find(params[:id])
-
     @post.destroy
     redirect_to posts_path
   end
@@ -54,5 +50,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :desc)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
