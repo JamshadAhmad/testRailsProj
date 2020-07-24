@@ -7,23 +7,21 @@ RSpec.configure do |config|
 end
 
 RSpec.describe Post, type: :model do
-  before(:each) do # :each is optional here, it is still triggered before each example/test case
-    @post = Post.new # runs before every example/test case
-  end
+  let(:post) { Post.new }
 
   it 'checks creation of a new post and tests before save callback to replace special characters' do
-    @post.title = ' abc-  '
+    post.title = ' abc-  '
 
-    @post.save
+    post.save
 
-    expect(@post.title).to eq('abc_')
+    expect(post.title).to eq('abc_')
   end
 
   it 'checks creation of a post whose title should not change' do
-    @post.title = 'xy_zabs'
+    post.title = 'xy_zabs'
 
-    @post.save
+    post.save
 
-    expect(@post.title).to eq('xy_zabs')
+    expect(post.title).to eq('xy_zabs')
   end
 end
