@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.configure do |config|
+RSpec.configure do |config| # this block is optional
   config.before(:suite) do
     # runs once before whole file
   end
@@ -9,7 +9,7 @@ end
 RSpec.describe Post, type: :model do
   let(:post) { Post.new } # lazy loaded, will only run once per example it is being used
   # let!(:post) will actually run before each example even if it is not used there
-  # it is now behaving like `before do` block
+  # let! will be behaving like `before do` block
   let(:x) { 1 + 1 }
   let(:y) { x + 3 } # we can use one let variable in another one as well
 
