@@ -1,18 +1,45 @@
-RSpec.configure do |config|
-  config.before(:all) { puts 'Before :all' }
-  config.after(:all) { puts 'After :all' }
-  config.before(:suite) { puts 'Before :suite' }
-  config.after(:suite) { puts 'After :suite' }
-end
-
-describe 'spec1' do
-  example 'spec1' do
-    puts 'spec1'
+RSpec.describe 'multi context hooks' do
+  before(:context) do
+    puts 'K'
   end
-end
 
-describe 'spec2' do
-  example 'spec2' do
-    puts 'spec2'
+  before(:example) do
+    puts 'Z'
+  end
+
+  after(:example) do
+    puts 'E'
+  end
+
+  it 'can multiply' do
+    expect(3 * 7).to eq(21)
+  end
+
+  it 'can divide' do
+    expect(40 / 8).to eq(5)
+  end
+
+  context 'with some criteria' do
+    before(:context) do
+      puts 'H'
+    end
+
+    before(:example) do
+      puts 'B'
+    end
+
+    it 'can subtract' do
+      expect(10 - 5).to eq(5)
+    end
+
+    context 'in this condition' do
+      before(:example) do
+        puts 'V'
+      end
+
+      it 'can add' do
+        expect(8 + 6).to eq(14)
+      end
+    end
   end
 end
