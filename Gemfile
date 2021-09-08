@@ -49,7 +49,7 @@ group :development do
 
 
   # To display errors better
-  gem 'better_errors', '~> 2.7', '>= 2.7.1'
+  gem 'better_errors', '~> 2.8'
 end
 
 group :test do
